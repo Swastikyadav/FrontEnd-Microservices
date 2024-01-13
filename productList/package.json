@@ -7,7 +7,7 @@
     "start": "webpack serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Swastikyadav",
   "license": "ISC",
   "dependencies": {
     "faker": "^5.1.0",
