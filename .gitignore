@@ -3,3 +3,6 @@ container/package-lock.json
 
 productList/node_modules
 productList/package-lock.json
+
+cart/node_modules
+cart/package-lock.json
