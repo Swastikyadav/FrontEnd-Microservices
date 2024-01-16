@@ -1,10 +1,2 @@
-import faker from "faker";
-
-let products = '';
-
-for (let i = 0; i < 3; i++) {
-    const name = faker.commerce.productName();
-    products += `<div>${name}</div>`;
-}
-
-document.querySelector("#mfe-products").innerHTML = products;
+import("./bootstrap");
+// The above import gives webpack an opportunity to load bootstrap asynchronously and fetch faker before executing index.js.

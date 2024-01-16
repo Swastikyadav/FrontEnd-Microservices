@@ -8,11 +8,12 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: "products",
+            name: "products", // Don't use "products" as an element's id as it will conflict with global var created by webpack.
             filename: "remoteEntry.js",
             exposes: {
-                "./ProductIndex": "./src/index"
-            }
+                "./ProductIndex": "./src/bootstrap",
+            },
+            shared: ["faker"],
         }),
         new HtmlWebpackPlugin({
             // Whatever file names coming out from webpack will be used as the entry point
