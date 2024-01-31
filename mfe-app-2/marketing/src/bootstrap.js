@@ -4,8 +4,12 @@ import { createMemoryHistory } from "history";
 import App from "./App";
 
 // Mount function to start up the app.
-const mount = (elm) => {
+const mount = (elm, { onNavigate }) => {
     const history = createMemoryHistory();
+
+    if (onNavigate) {
+        history.listen(onNavigate);
+    };
 
     ReactDOM.render(
         <App history={history} />,
@@ -18,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
     const devRoot = document.querySelector("#marketing_dev_root");
 
     if (devRoot) {
-        mount(devRoot);
+        mount(devRoot, {});
     }
 }
 
