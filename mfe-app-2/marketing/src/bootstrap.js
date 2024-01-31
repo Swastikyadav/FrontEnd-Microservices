@@ -15,6 +15,17 @@ const mount = (elm, { onNavigate }) => {
         <App history={history} />,
         elm
     );
+
+    // Return the onParentNavigate function to be used by the parent.
+    return {
+        onParentNavigate({ pathname: nextPathname }) {
+            const pathname = history.location.pathname;
+
+            if (pathname!== nextPathname) { // Avoid any potential infinite loop.
+                history.push(nextPathname);
+            }
+        }
+    };
 };
 
 // If we are in development and Isolation call mount immediately.
