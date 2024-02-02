@@ -7,11 +7,16 @@ const packageJson = require("../package.json");
 
 const devConfig = {
     mode: "development",
+    /**
+ * Sets the publicPath property for webpack dev server. 
+ * This tells webpack where to serve the output files from.
+ * Using http://localhost:8082/ will serve the files from port 8082 on localhost.
+ */
     output: {
-        publicPath: "http://localhost:8081/",
+        publicPath: "http://localhost:8082/",
     },
     devServer: {
-        port: 8081,
+        port: 8082,
         historyApiFallback: { // For navigation purposes.
             index: "/index.html"
         }
@@ -21,10 +26,10 @@ const devConfig = {
             template: "./public/index.html",
         }),
         new ModuleFederationPlugin({
-            name: "marketing",
+            name: "auth",
             filename: "remoteEntry.js",
             exposes: {
-                "./MarketingApp": "./src/bootstrap.js",
+                "./AuthApp": "./src/bootstrap.js",
             },
             shared: packageJson.dependencies,
         })
